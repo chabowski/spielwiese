@@ -1,0 +1,1313 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/css" href="/usr/share/suse-doc-style-checker/source/check.css"?>
+<results>
+  <results-title>Style Checker Results for SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro_bigfile.xml</results-title>
+  <part>
+    <part-title>A/An Errors</part-title>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>267</line></location>
+        <message>Do not use
+            <quote>a</quote> here:
+            <quote>Another set of the same type of Supermicro server performs the duties of RADOS gateway. As the documentation states (Ceph RADOS Gateway) “Ceph RADOS Gateway is an object storage interface built on top of librgw to provide applications with a RESTful <highlight>gateway</highlight> to Ceph Storage Clusters.”</quote></message><suggestion>Use <quote>an</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>904</line></location>
+        <message>Do not use
+            <quote>A</quote> here:
+            <quote><highlight>A</highlight> /srv/pillar/ceph/proposals/policy.cfg file needs to be created to instruct Salt on the location and configuration files to use for the different components that make up the Ceph cluster (Salt master, admin, monitor, and OSDs).</quote></message><suggestion>Use <quote>an</quote>
+            instead.</suggestion></result>
+  </part>
+  <part>
+    <part-title>Computer Elements</part-title>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>811</line>
+      </location>
+      <message><tag>command</tag> element
+          <name>systemctl start salt-master.service systemctl enab…
+                </name>
+          contains 72 characters.
+        </message>
+      <suggestion>Use a <tag>screen</tag> element.
+        </suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Figures</part-title>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>219</line>
+      </location>
+      <message>Media object
+          <name>clip_image002_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>309</line>
+      </location>
+      <message>Media object
+          <name>clip_image004_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>597</line>
+      </location>
+      <message>Media object
+          <name>clip_image006_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>641</line>
+      </location>
+      <message>Media object
+          <name>clip_image008_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>650</line>
+      </location>
+      <message>Media object
+          <name>clip_image010_1kjne54l.png</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>1423</line>
+      </location>
+      <message>Media object
+          <name>clip_image012_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>1433</line>
+      </location>
+      <message>Media object
+          <name>clip_image014_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>1441</line>
+      </location>
+      <message>Media object
+          <name>clip_image016_1kjne54l.jpg</name>
+          does not contain alternative text.
+        </message>
+      <suggestion>Add a <tag>textobject</tag> element with a
+          <tag>phrase</tag> inside it, then add descriptive text for the image
+          to it.
+        </suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Identifiers</part-title>
+    <result type="error">
+      <location>
+        <line>4</line>
+      </location>
+      <message>Section <name>Introduction The objective of this guide is to pre…
+                </name> has no identifier.
+        </message>
+      <suggestion>Add an <em>id</em> attribute.
+        </suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Links</part-title>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>66</line>
+      </location>
+      <message>Link
+          <name>https://www.supermicro.com/products/system/2U/6028…
+                </name>
+          contains a very long URL.
+        </message>
+      <suggestion>Try to shorten this URL by leaving away any unimportant
+          parts of it.
+        </suggestion>
+      <suggestion>Some pages
+          
+          offer a permanent link or short link function.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>196</line>
+      </location>
+      <message>Link
+          <name>https://www.suse.com/docrep/documents/1mdg7eq2kz/s…
+                </name>
+          contains a very long URL.
+        </message>
+      <suggestion>Try to shorten this URL by leaving away any unimportant
+          parts of it.
+        </suggestion>
+      <suggestion>Some pages
+          
+          offer a permanent link or short link function.
+        </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>275</line>
+      </location>
+      <message>Link
+          <name>https://www.supermicro.com/products/system/2U/6028…
+                </name>
+          contains a very long URL.
+        </message>
+      <suggestion>Try to shorten this URL by leaving away any unimportant
+          parts of it.
+        </suggestion>
+      <suggestion>Some pages
+          
+          offer a permanent link or short link function.
+        </suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Lists</part-title>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>46</line>
+      </location>
+      <message>List <name>One Supermicro SuperServer 6028TR-HTR system with …
+                </name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>55</line>
+      </location>
+      <message>List <name>Two Supermicro SuperServer 1028TP-DTR systems with…
+                </name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>64</line>
+      </location>
+      <message>List <name>Four Supermicro SuperStorage Server 6028R-E1CR24L.</name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>75</line>
+      </location>
+      <message>List <name>Cisco Nexus 9000 switches.</name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>85</line>
+      </location>
+      <message>List <name>SUSE Enterprise Storage 4. (Please note: The SUSE …
+                </name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>590</line>
+      </location>
+      <message>List <name>Ensure Boot Mode is set to ‘UEFI’ for all the phys…
+                </name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>699</line>
+      </location>
+      <message>List <name>Example: dd if=/dev/sda of=/dev/sdb bs=4M</name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>699</line>
+      </location>
+      <message>List <name>Example: dd if=/dev/sda of=/dev/sdb bs=4M</name> is nested inside
+          2 other lists.
+        </message>
+      <suggestion>Avoid nesting lists so deeply.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>826</line>
+      </location>
+      <message>List <name>Ex: In our case: master: admin.suse.imsc.int</name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>884</line>
+      </location>
+      <message>List <name>salt-run state.orch ceph.stage.discovery</name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>884</line>
+      </location>
+      <message>List <name>salt-run state.orch ceph.stage.discovery</name> is nested inside
+          2 other lists.
+        </message>
+      <suggestion>Avoid nesting lists so deeply.</suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>896</line>
+      </location>
+      <message>List <name>The proposed data and journal profile proposed for…
+                </name> is nested inside
+          2 other lists.
+        </message>
+      <suggestion>Avoid nesting lists so deeply.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>925</line>
+      </location>
+      <message>List <name>salt-run state.orch ceph.stage.configure</name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>925</line>
+      </location>
+      <message>List <name>salt-run state.orch ceph.stage.configure</name> is nested inside
+          2 other lists.
+        </message>
+      <suggestion>Avoid nesting lists so deeply.</suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>937</line>
+      </location>
+      <message>List <name>salt-run state.orch ceph.stage deploy (Note: The c…
+                </name> is nested inside
+          2 other lists.
+        </message>
+      <suggestion>Avoid nesting lists so deeply.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>987</line>
+      </location>
+      <message>List <name>ceph osd pool delete test --yes-i-really-really-me…
+                </name> contains 1
+          item.
+        </message>
+      <suggestion>Lists should contain at least 2 items.</suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Productnames, Productnumbers, &amp; Dates</part-title>
+    <result type="error">
+      <location>
+        <line>4</line>
+      </location>
+      <message>Deliverable <name>Introduction The objective of this guide is to pre…
+                </name> does not contain
+          a productname.
+        </message>
+      <suggestion>Add a <tag>productname</tag> element.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <line>4</line>
+      </location>
+      <message>Deliverable <name>Introduction The objective of this guide is to pre…
+                </name> does not contain
+          a productnumber.
+        </message>
+      <suggestion>Add a <tag>productnumber</tag> element.</suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <line>4</line>
+      </location>
+      <message>Deliverable <name>Introduction The objective of this guide is to pre…
+                </name> does not
+          contain a date.
+        </message>
+      <suggestion>Add a <tag>date</tag> element, use &lt;?dbtimestamp?&gt; inside.</suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Sections</part-title>
+    <result type="error">
+      <location>
+        <line>4</line>
+      </location>
+      <message>Section <name>Introduction The objective of this guide is to pre…
+                </name> lacks an
+          introductory paragraph or abstract.</message>
+      <suggestion>Add a <tag>para</tag> or <tag>abstract</tag>.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>72</line>
+      </location>
+      <message>Section <name>Switching infrastructure:</name> lacks an
+          introductory paragraph or abstract.</message>
+      <suggestion>Add a <tag>para</tag> or <tag>abstract</tag>.</suggestion>
+      <suggestion>Use <tag>glossary</tag> or <tag>bibliography</tag> for
+            glossaries or bibliographies, respectively. These elements do not
+            need an introduction.
+          </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>151</line>
+      </location>
+      <message>Section <name>Requirements</name> contains a lone
+          subsection.
+        </message>
+      <suggestion>Flatten the subsection structure.</suggestion>
+    </result>
+    <result type="error">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>1450</line>
+      </location>
+      <message>Section <name>Appendix E: Network switches configuration files</name> lacks an
+          introductory paragraph or abstract.</message>
+      <suggestion>Add a <tag>para</tag> or <tag>abstract</tag>.</suggestion>
+      <suggestion>Use <tag>glossary</tag> or <tag>bibliography</tag> for
+            glossaries or bibliographies, respectively. These elements do not
+            need an introduction.
+          </suggestion>
+    </result>
+    <result type="warning">
+      <location>
+        <file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file>
+        <line>1450</line>
+      </location>
+      <message>Section <name>Appendix E: Network switches configuration files</name> contains a lone
+          subsection.
+        </message>
+      <suggestion>Flatten the subsection structure.</suggestion>
+    </result>
+  </part>
+  <part>
+    <part-title>Sentence Length</part-title>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>96</line></location>
+                                <message>Sentence with 29 words:
+                                <quote>This reference architecture is focused on administrators who deploy software defined storage solutions within their data centers and making the different storage services accessible to their own customer base. By following this document as well as those referenced herein, the administrator should have a full view of the SUSE Enterprise Storage architecture, deployment and administrative tasks, with a specific set of recommendations for deployment of the hardware and networking platform.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>96</line></location>
+                                <message>Sentence with 41 words:
+                                <quote>This reference architecture is focused on administrators who deploy software defined storage solutions within their data centers and making the different storage services accessible to their own customer base. By following this document as well as those referenced herein, the administrator should have a full view of the SUSE Enterprise Storage architecture, deployment and administrative tasks, with a specific set of recommendations for deployment of the hardware and networking platform.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>110</line></location>
+                                <message>Sentence with 37 words:
+                                <quote>SUSE Enterprise Storage delivers a highly scalable, resilient, self-healing storage environment designed for large scale environments ranging from hundreds of terabytes to petabytes. This software defined storage product can reduce IT costs by leveraging industry standard servers to present unified storage servicing block, file, and object protocols. Having storage that can meet the current needs and requirements of the data center while supporting topologies and protocols demanded by new web-scale applications, enables administrators to support the ever-increasing storage requirements of the enterprise with ease.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>123</line></location>
+                                <message>Sentence with 34 words:
+                                <quote>Customers of all sizes face a major storage challenge: While the overall cost per terabyte of physical storage has gone down over the years, a data growth explosion is taking place driven by the need to access and leverage new data sources (ex: external sources such as social media) and the ability to ‘manage’ new data types (ex: unstructured or object data). These ever increasing “data lakes” need different access methods: File, block, or object.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>141</line></location>
+                                <message>Sentence with 35 words:
+                                <quote>This software defined storage solution enables transformation of the enterprise infrastructure by providing a unified platform where structured and unstructured data can co-exist and be accessed as file, block, or object depending on application requirements. The combination of open-source software (Ceph) and industry standard servers reduce cost while providing the on-ramp to unlimited scalability needed to keep up with future demands.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>141</line></location>
+                                <message>Sentence with 26 words:
+                                <quote>This software defined storage solution enables transformation of the enterprise infrastructure by providing a unified platform where structured and unstructured data can co-exist and be accessed as file, block, or object depending on application requirements. The combination of open-source software (Ceph) and industry standard servers reduce cost while providing the on-ramp to unlimited scalability needed to keep up with future demands.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>196</line></location>
+                                <message>Sentence with 29 words:
+                                <quote>This architecture overview section complements the SUSE Enterprise Storage Technical Overview document available online which presents the concepts behind software defined storage and Ceph as well as a quick start guide (non-platform specific).</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>229</line></location>
+                                <message>Sentence with 41 words:
+                                <quote>In addition to the required network interfaces, the minimum SUSE Enterprise Storage cluster comprises of a minimum of one administration server (physical or virtual), four object storage device nodes (OSDs), three monitor nodes (MONs), and one or more Ceph Object Gateway. Specific to our implementation:</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>237</line></location>
+                                <message>Sentence with 38 words:
+                                <quote>One of the nodes on the Supermicro SuperServer 6028TR-HTR server is deployed as our administrative physical host server. The administration server is used to deploy and configure SUSE Enterprise Storage on the other nodes (OSDs, MONs and Object Gateways). openAttic, the central management system which supports Ceph needs to be installed on the administration server as well.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>255</line></location>
+                                <message>Sentence with 39 words:
+                                <quote>One pair of nodes on a Supermicro SuperServer 1028TP-DTR server acts as our iSCSI gateway. iSCSI is a storage area network (SAN) protocol that allows clients (called initiators) to send SCSI command to SCSI storage devices (targets) on remote servers. SUSE Enterprise Storage Server includes a facility that open Ceph storage management to heterogeneous clients such as Microsoft Windows and VMware vSphere through the iSCSI protocol. These systems may scale horizontally through client usage of multi-path technology.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>255</line></location>
+                                <message>Sentence with 26 words:
+                                <quote>One pair of nodes on a Supermicro SuperServer 1028TP-DTR server acts as our iSCSI gateway. iSCSI is a storage area network (SAN) protocol that allows clients (called initiators) to send SCSI command to SCSI storage devices (targets) on remote servers. SUSE Enterprise Storage Server includes a facility that open Ceph storage management to heterogeneous clients such as Microsoft Windows and VMware vSphere through the iSCSI protocol. These systems may scale horizontally through client usage of multi-path technology.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>267</line></location>
+                                <message>Sentence with 31 words:
+                                <quote>Another set of the same type of Supermicro server performs the duties of RADOS gateway. As the documentation states (Ceph RADOS Gateway) “Ceph RADOS Gateway is an object storage interface built on top of librgw to provide applications with a RESTful gateway to Ceph Storage Clusters.”</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>275</line></location>
+                                <message>Sentence with 37 words:
+                                <quote>Data is stored on four Supermicro SuperStorage Server 6028R-E1CR24L servers categorized as storage nodes. The nodes contain multiple storage devices that are each assigned an Object Storage Daemon (OSD). The OSD daemon assigned to the OSD stores data and manages the data replication and rebalancing processes OSD daemons also communicate with the monitor (MON) nodes and provide them with the state of the other OSD daemons.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>512</line></location>
+                                <message>Sentence with 30 words:
+                                <quote>Subscription Management Tool for SLES12 SP2 – allows enterprise customers to optimize the management of SUSE Linux Enterprise (and extensions such as SUSE Enterprise Storage) software updates and subscription entitlement. It establishes a proxy system for SUSE Customer Center with repository and registration targets.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>520</line></location>
+                                <message>Sentence with 44 words:
+                                <quote>SUSE Enterprise Storage – Provided as an extension on top of SUSE Linux Enterprise Server, this intelligent software-defined storage solution, powered by Ceph technology with enterprise engineering and support from SUSE enables customers to transform enterprise infrastructure to reduce costs while providing unlimited scalability.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>561</line></location>
+                                <message>Sentence with 29 words:
+                                <quote>Network IP addressing and IP ranges need proper planning. In optimal environments, a single storage subnet should be used for all SUSE Enterprise Storage nodes on the primary network, with a separate, single subnet for the cluster network. Depending on the size of the installation, ranges larger than /24 may be required. When planning the network, current as well as future growth should be taken into consideration.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>671</line></location>
+                                <message>Sentence with 31 words:
+                                <quote>No RAID 1. Instead, copy the OS installation from the OS DOM to the “backup” DOM and have it ready for an alternate boot in the event of a failure on the main DOM. To accomplish this, follow these instructions after the SUSE Linux Enterprise Server installation is complete.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>694</line></location>
+                                <message>Sentence with 26 words:
+                                <quote>Copy the entire drive contents from the boot drive to the backup drive using the command dd if=&lt;OS drive device name&gt; of=&lt;backup drive device name&gt; bs=4M</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>904</line></location>
+                                <message>Sentence with 34 words:
+                                <quote>A /srv/pillar/ceph/proposals/policy.cfg file needs to be created to instruct Salt on the location and configuration files to use for the different components that make up the Ceph cluster (Salt master, admin, monitor, and OSDs).</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1021</line></location>
+                                <message>Sentence with 26 words:
+                                <quote>It is important to maintain the minimum number of MON nodes at three. As the cluster increases in size, it is best to increment in pairs, keeping the total number of Mon nodes as an odd number. However, only really large or very distributed clusters would likely need beyond the 3 Mon nodes cited in this reference implementation. For performance reasons, it is recommended to use distinct nodes for the MON roles, so that the OSD nodes can be scaled as capacity requirements dictate.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1032</line></location>
+                                <message>Sentence with 29 words:
+                                <quote>As described in this implementation guide as well as the SUSE Enterprise Storage documentation, a minimum of four OSD nodes is recommended, with the default replication setting of 3. This will ensure cluster operation, even with the loss of a complete OSD node. Generally speaking, performance of the overall cluster increases as more properly configured OSD nodes are added.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1075</line></location>
+                                <message>Sentence with 27 words:
+                                <quote>*One enclosure with 4 blade nodes. Node consists of: 1X E5-2623V4 26G CPU 2X 8GB DD4-2400 ECC REG DIMM 2X SMC SATA3 DOM 64GB MLC 1X Dual-port 10G Ethernet w SFP+ W/CDR (AOC-STGN-I2S) Assembly and Testing</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1107</line></location>
+                                <message>Sentence with 28 words:
+                                <quote>** One enclosure with 2 blade nodes. Node consists of: 1X E5-2620V4 2.1G CPU 8X 8GB DDR4-2400 ECC REG DIMM 1X SMC SATA3 DOM 64GB MLC 1X Dual-port 10G Ethernet w SFP+ W/CDR (AOC-STGN-I2S) Assembly and Testing Note: 2 enclosures = 4 gateway nodes (2 iSCSI, 2 RGW)</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1140</line></location>
+                                <message>Sentence with 59 words:
+                                <quote>Each servers consists of: 2X E2630V4 2.2G CPU 8X 32GB DD4-2400 ECC REG DIMM 2X SMC SATA3 DOM 64GB MLC 24X Toshiba 3.5” 6TB 7.2K RPM SATA 128M 512e HDD 2X Intel DC P3600 400GB NVMe PCIe3.0 , MLC AIC SSD 1X Dual-port 10G Ethernet w SFP+ W/CDR (AOC-STGN-I2S) 1X `SIOM 2-port 10G SFP+, Intel 82599ES Controller Add-on Card (AOC-MTGN-I2S) Assembly and Testing</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="warning">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1215</line></location>
+                                <message>Sentence with 26 words:
+                                <quote>Note: The computer room where the equipment is located has redundant networking equipment allowing the Ceph cluster to be configured according to SUSE Enterprise Storage best practices.</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1466</line></location>
+                                <message>Sentence with 42 words:
+                                <quote>limit-resource vlan minimum 16 maximum 4094 limit-resource vrf minimum 2 maximum 4096 limit-resource port-channel minimum 0 maximum 511 limit-resource u4route-mem minimum 248 maximum 248 limit-resource u6route-mem minimum 96 maximum 96 limit-resource m4route-mem minimum 58 maximum 58 limit-resource m6route-mem minimum 8 maximum 8</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+    <result type="error">
+                                <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1897</line></location>
+                                <message>Sentence with 45 words:
+                                <quote>Flags: D - Down P - Up in port-channel (members) I - Individual H - Hot-standby (LACP only) s - Suspended r - Module-removed S - Switched R - Routed U - Up (port-channel) p - Up in delay-lacp mode (member) M - Not in use. Min-links not met</quote>
+                            </message>
+                            <suggestion>Remove unnecessary words.</suggestion>
+                            <suggestion>Split the sentence.</suggestion>
+                        </result>
+  </part>
+  <part>
+    <part-title>Terminology</part-title>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>8</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>The objective of this guide is to present a step-by-step guide on how to implement <highlight>SUSE Enterprise</highlight> Storage (v4) on Supermicro hardware platforms.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>16</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>The platform is built and deployed to show customers the ability to deploy a robust <highlight>SUSE Enterprise</highlight> Storage cluster on the Supermicro platform. Its goal is to show architectural best practices and how to build a Ceph-based cluster that will support the implementation of two key gateways: iSCSI and RADOS (RGW).</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>22</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Upon completion of the steps in this document, a working <highlight>SUSE Enterprise</highlight> Storage (v4) deployment will be operational as described in the SUSE Enterprise Storage 4 Deployment and Administration Guide.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>27</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>There are several methods for installing a Ceph cluster with <highlight>SUSE Enterprise</highlight> Storage. This guide demonstrates SUSE Enterprise Storage’s preferred approach, based on Salt technology.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>27</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>There are several methods for installing a Ceph cluster with SUSE Enterprise Storage. This guide demonstrates <highlight>SUSE Enterprise</highlight> Storage’s preferred approach, based on Salt technology.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>34</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>The reference architecture described was built as a joint effort between Ingram Micro, Supermicro and SUSE. The equipment was deployed to Ingram Micro’s briefing center in Buffalo, NY where the <highlight>SUSE Enterprise</highlight> Storage software-defined solution was installed and tested.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>39</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>The <highlight>SUSE Enterprise</highlight> Storage cluster leveraged three family of Supermicro servers. The role/functionality of each SUSE Enterprise Storage component will be explained in more detail in the architectural overview section.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>39</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>The SUSE Enterprise Storage cluster leveraged three family of Supermicro servers. The role/functionality of each <highlight>SUSE Enterprise</highlight> Storage component will be explained in more detail in the architectural overview section.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>87</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage 4. (Please note: The SUSE Enterprise Storage subscription includes a limited use [for SUSE Enterprise Storage] entitlement for SUSE Linux Enterprise Server as well.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>87</line></location>
+        <message>Do not use
+            <quote>Please</quote> here:
+            <quote>SUSE Enterprise Storage 4. <highlight>(Please</highlight> note: The SUSE Enterprise Storage subscription includes a limited use [for SUSE Enterprise Storage] entitlement for SUSE Linux Enterprise Server as well.</quote></message><suggestion>Remove
+            <quote>Please</quote>.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>87</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>SUSE Enterprise Storage 4. (Please note: The <highlight>SUSE Enterprise</highlight> Storage subscription includes a limited use [for SUSE Enterprise Storage] entitlement for SUSE Linux Enterprise Server as well.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>87</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>SUSE Enterprise Storage 4. (Please note: The SUSE Enterprise Storage subscription includes a limited use [for <highlight>SUSE Enterprise</highlight> Storage] entitlement for SUSE Linux Enterprise Server as well.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>96</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>This reference architecture is focused on administrators who deploy software defined storage solutions within their data centers and making the different storage services accessible to their own customer base. By following this document as well as those referenced herein, the administrator should have a full view of the <highlight>SUSE Enterprise</highlight> Storage architecture, deployment and administrative tasks, with a specific set of recommendations for deployment of the hardware and networking platform.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>110</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage delivers a highly scalable, resilient, self-healing storage environment designed for large scale environments ranging from hundreds of terabytes to petabytes. This software defined storage product can reduce IT costs by leveraging industry standard servers to present unified storage servicing block, file, and object protocols. Having storage that can meet the current needs and requirements of the data center while supporting topologies and protocols demanded by new web-scale applications, enables administrators to support the ever-increasing storage requirements of the enterprise with ease.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>110</line></location>
+        <message>Do not use
+            <quote>ease</quote> here:
+            <quote>SUSE Enterprise Storage delivers a highly scalable, resilient, self-healing storage environment designed for large scale environments ranging from hundreds of terabytes to petabytes. This software defined storage product can reduce IT costs by leveraging industry standard servers to present unified storage servicing block, file, and object protocols. Having storage that can meet the current needs and requirements of the data center while supporting topologies and protocols demanded by new web-scale applications, enables administrators to support the ever-increasing storage requirements of the enterprise with <highlight>ease.</highlight></quote></message><suggestion>Use <quote>simplify</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>141</line></location>
+        <message>Do not use
+            <quote>open-source</quote> here:
+            <quote>This software defined storage solution enables transformation of the enterprise infrastructure by providing a unified platform where structured and unstructured data can co-exist and be accessed as file, block, or object depending on application requirements. The combination of <highlight>open-source</highlight> software (Ceph) and industry standard servers reduce cost while providing the on-ramp to unlimited scalability needed to keep up with future demands.</quote></message><suggestion>Use <quote>open source</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>164</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>A <highlight>SUSE Enterprise</highlight> Storage solution is:</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>168</line></location>
+        <message>Do not use
+            <quote>setup</quote> here:
+            <quote>Simple to <highlight>setup</highlight> and deploy, within the documented guidelines of system hardware, networking and environmental prerequisites.</quote></message><suggestion>Use <quote>set up</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>204</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage provides unified block, file and object access based on Ceph. Ceph is a distributed storage solution designed for scalability, reliability and performance. A critical component of Ceph is the RADOS object storage. RADOS enables a number of object storage nodes to function together to store and retrieve data from the cluster using object storage techniques. The result is a storage solution that is abstracted from the hardware.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>229</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>In addition to the required network interfaces, the minimum <highlight>SUSE Enterprise</highlight> Storage cluster comprises of a minimum of one administration server (physical or virtual), four object storage device nodes (OSDs), three monitor nodes (MONs), and one or more Ceph Object Gateway. Specific to our implementation:</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>237</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>One of the nodes on the Supermicro SuperServer 6028TR-HTR server is deployed as our administrative physical host server. The administration server is used to deploy and configure <highlight>SUSE Enterprise</highlight> Storage on the other nodes (OSDs, MONs and Object Gateways). openAttic, the central management system which supports Ceph needs to be installed on the administration server as well.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>255</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>One pair of nodes on a Supermicro SuperServer 1028TP-DTR server acts as our iSCSI gateway. iSCSI is a storage area network (SAN) protocol that allows clients (called initiators) to send SCSI command to SCSI storage devices (targets) on remote servers. <highlight>SUSE Enterprise</highlight> Storage Server includes a facility that open Ceph storage management to heterogeneous clients such as Microsoft Windows and VMware vSphere through the iSCSI protocol. These systems may scale horizontally through client usage of multi-path technology.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>295</line></location>
+        <message>Do not use
+            <quote>backend</quote> here:
+            <quote>Separation of cluster <highlight>(backend)</highlight> and client-facing network traffic and isolate Ceph OSD daemon replication activities from Ceph client to storage cluster access.</quote></message><suggestion>Use <quote>back-end</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>330</line></location>
+        <message>Do not use
+            <quote>Hostname</quote> here:
+            <quote><highlight>Hostname</highlight></quote></message><suggestion>Use <quote>host name</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>493</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>The preceding sections provided significant details on the both the overall Supermicro hardware as well as an introduction to the Ceph software architecture. In this section, the focus is on the SUSE components: SUSE Linux Enterprise Server (SLES), <highlight>SUSE Enterprise</highlight> Storage (SES), and the Subscription Management Tool (SMT).</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>512</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Subscription Management Tool for SLES12 SP2 – allows enterprise customers to optimize the management of SUSE Linux Enterprise (and extensions such as <highlight>SUSE Enterprise</highlight> Storage) software updates and subscription entitlement. It establishes a proxy system for SUSE Customer Center with repository and registration targets.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>520</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage – Provided as an extension on top of SUSE Linux Enterprise Server, this intelligent software-defined storage solution, powered by Ceph technology with enterprise engineering and support from SUSE enables customers to transform enterprise infrastructure to reduce costs while providing unlimited scalability.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>561</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Network IP addressing and IP ranges need proper planning. In optimal environments, a single storage subnet should be used for all <highlight>SUSE Enterprise</highlight> Storage nodes on the primary network, with a separate, single subnet for the cluster network. Depending on the size of the installation, ranges larger than /24 may be required. When planning the network, current as well as future growth should be taken into consideration.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>592</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Ensure Boot Mode is set to ‘UEFI’ for all the physical nodes that comprise the <highlight>SUSE Enterprise</highlight> Storage Cluster.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>656</line></location>
+        <message>Do not use
+            <quote>CDROM</quote> here:
+            <quote>Figure 5. Booting from Virtual <highlight>CDROM</highlight></quote></message><suggestion>Use <quote>CD-ROM</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>720</line></location>
+        <message>In the context of time,
+            do not use <quote>Once</quote>:
+            <quote><highlight>Once</highlight> the Operating System installation starts, perform a minimal installation and ensure that the following actions take place:</quote></message><suggestion>Use <quote>when</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>739</line></location>
+        <message>Do not use
+            <quote>filesystem</quote> here:
+            <quote>When creating the <highlight>filesystem</highlight> structure for the root disk, de-select the option to have a separate /home directory.</quote></message><suggestion>Use <quote>file system</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>749</line></location>
+        <message>Do not use
+            <quote>zypper</quote> here:
+            <quote>After installation is complete, run <highlight>zypper</highlight> up to ensure all current updates are applied.</quote></message><suggestion>Use <quote>Zypper</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>800</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Base assumption: SLES12 SP2 and <highlight>SUSE Enterprise</highlight> Storage 4 extension installed and register on each node of the cluster (including the Admin server):</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>984</line></location>
+        <message>In the context of time,
+            do not use <quote>Once</quote>:
+            <quote><highlight>Once</highlight> the tests are complete, you can remove the test pool via:</quote></message><suggestion>Use <quote>when</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>999</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Some final considerations before deploying your own version of a <highlight>SUSE Enterprise</highlight> Storage cluster, based on Ceph. As previously stated, please refer to the Administration and Deployment Guide</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>999</line></location>
+        <message>Do not use
+            <quote>please</quote> here:
+            <quote>Some final considerations before deploying your own version of a SUSE Enterprise Storage cluster, based on Ceph. As previously stated, <highlight>please</highlight> refer to the Administration and Deployment Guide</quote></message><suggestion>Remove
+            <quote>please</quote>.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1012</line></location>
+        <message>Do not use
+            <quote>backend</quote> here:
+            <quote>With the default replication setting of 3, remember that the client-facing network will have about half or less of the traffic of the <highlight>backend</highlight> network. This is especially true when component failures occur or rebalancing happens on the OSD nodes. For this reason, it is important not to under provision this critical cluster and service resource.</quote></message><suggestion>Use <quote>back-end</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1032</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>As described in this implementation guide as well as the <highlight>SUSE Enterprise</highlight> Storage documentation, a minimum of four OSD nodes is recommended, with the default replication setting of 3. This will ensure cluster operation, even with the loss of a complete OSD node. Generally speaking, performance of the overall cluster increases as more properly configured OSD nodes are added.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1154</line></location>
+        <message>Do not use
+            <quote>HDD</quote> here:
+            <quote>24X Toshiba 3.5” 6TB 7.2K RPM SATA 128M 512e <highlight>HDD</highlight></quote></message><suggestion>Use <quote>hard disk</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1140</line></location>
+        <message>Do not use
+            <quote>HDD</quote> here:
+            <quote>Each servers consists of: 2X E2630V4 2.2G CPU 8X 32GB DD4-2400 ECC REG DIMM 2X SMC SATA3 DOM 64GB MLC 24X Toshiba 3.5” 6TB 7.2K RPM SATA 128M 512e <highlight>HDD</highlight> 2X Intel DC P3600 400GB NVMe PCIe3.0 , MLC AIC SSD 1X Dual-port 10G Ethernet w SFP+ W/CDR (AOC-STGN-I2S) 1X `SIOM 2-port 10G SFP+, Intel 82599ES Controller Add-on Card (AOC-MTGN-I2S) Assembly and Testing</quote></message><suggestion>Use <quote>hard disk</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1184</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage Subscription</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1184</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage SubscriptionBase configuration</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1205</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage Subscription Expansion nodes</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1205</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote><highlight>SUSE Enterprise</highlight> Storage Subscription Expansion nodes</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1215</line></location>
+        <message>Do not use
+            <quote>SUSE Enterprise</quote> here:
+            <quote>Note: The computer room where the equipment is located has redundant networking equipment allowing the Ceph cluster to be configured according to <highlight>SUSE Enterprise</highlight> Storage best practices.</quote></message><suggestion>Use <quote>SUSE Linux Enterprise</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1462</line></location>
+        <message>Do not use
+            <quote>hostname</quote> here:
+            <quote><highlight>hostname</highlight> N9K-Suse-A</quote></message><suggestion>Use <quote>host name</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1466</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>limit-resource <highlight>vlan</highlight> minimum 16 maximum 4094 limit-resource vrf minimum 2 maximum 4096 limit-resource port-channel minimum 0 maximum 511 limit-resource u4route-mem minimum 248 maximum 248 limit-resource u6route-mem minimum 96 maximum 96 limit-resource m4route-mem minimum 58 maximum 58 limit-resource m6route-mem minimum 8 maximum 8</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1484</line></location>
+        <message>Do not use
+            <quote>username</quote> here:
+            <quote><highlight>username</highlight> admin password 5</quote></message><suggestion>Use <quote>user name</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1486</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote><highlight>vlan</highlight> 1,145-146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1488</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote><highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1492</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote><highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1533</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1539</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1545</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1551</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1557</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1563</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1569</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1575</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1581</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1587</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1593</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1599</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1605</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1613</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1621</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1629</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1649</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport trunk allowed <highlight>vlan</highlight> 1,145-146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1657</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1663</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1669</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1675</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1681</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1687</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1693</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1699</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1705</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1711</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1717</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1723</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 145</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1755</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1765</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1775</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1785</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1793</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport access <highlight>vlan</highlight> 146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1853</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport trunk allowed <highlight>vlan</highlight> 1,145-146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1863</line></location>
+        <message>Do not use
+            <quote>vlan</quote> here:
+            <quote>switchport trunk allowed <highlight>vlan</highlight> 1,145-146</quote></message><suggestion>Use <quote>VLAN</quote>
+            instead.</suggestion></result>
+    <result type="error">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1879</line></location>
+        <message>Do not use
+            <quote>email</quote> here:
+            <quote><highlight>email</highlight></quote></message><suggestion>Use <quote>e-mail</quote>
+            instead.</suggestion></result>
+  </part>
+  <part>
+    <part-title>Wordy Phrases</part-title>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>96</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>This reference architecture is focused on administrators who deploy software defined storage solutions within their data centers and making the different storage services accessible to their own customer base. By following this document <highlight>as well as</highlight> those referenced herein, the administrator should have a full view of the SUSE Enterprise Storage architecture, deployment and administrative tasks, with a specific set of recommendations for deployment of the hardware and networking platform.</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>131</line></location>
+        <message>Do not use
+            <quote>a number of</quote> here:
+            <quote>Addressing these challenges with legacy storage solutions would require either <highlight>a number of</highlight> specialized products (usually driven by access method) with traditional protection schemes (ex: RAID). These solutions struggle when scaling from terabytes to petabytes at reasonable cost and performance levels.</quote></message><suggestion>Use <quote>several</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>196</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>This architecture overview section complements the SUSE Enterprise Storage Technical Overview document available online which presents the concepts behind software defined storage and Ceph <highlight>as well as</highlight> a quick start guide (non-platform specific).</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>204</line></location>
+        <message>Do not use
+            <quote>a number of</quote> here:
+            <quote>SUSE Enterprise Storage provides unified block, file and object access based on Ceph. Ceph is a distributed storage solution designed for scalability, reliability and performance. A critical component of Ceph is the RADOS object storage. RADOS enables <highlight>a number of</highlight> object storage nodes to function together to store and retrieve data from the cluster using object storage techniques. The result is a storage solution that is abstracted from the hardware.</quote></message><suggestion>Use <quote>several</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>493</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>The preceding sections provided significant details on the both the overall Supermicro hardware <highlight>as well as</highlight> an introduction to the Ceph software architecture. In this section, the focus is on the SUSE components: SUSE Linux Enterprise Server (SLES), SUSE Enterprise Storage (SES), and the Subscription Management Tool (SMT).</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>533</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>This deployment section should be seen as a supplement online documentation. Specifically, the SUSE Enterprise Storage 4 Administration and Deployment Guide <highlight>as well as</highlight> SUSE Linux Enterprise Server Administration Guide and Subscription Management Tool (SMT) for SLES 12 SP2. Thus, the emphasis is on specific design and configuration choices.</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>561</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>Network IP addressing and IP ranges need proper planning. In optimal environments, a single storage subnet should be used for all SUSE Enterprise Storage nodes on the primary network, with a separate, single subnet for the cluster network. Depending on the size of the installation, ranges larger than /24 may be required. When planning the network, current <highlight>as well as</highlight> future growth should be taken into consideration.</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>561</line></location>
+        <message>Do not use
+            <quote>taken into consideration</quote> here:
+            <quote>Network IP addressing and IP ranges need proper planning. In optimal environments, a single storage subnet should be used for all SUSE Enterprise Storage nodes on the primary network, with a separate, single subnet for the cluster network. Depending on the size of the installation, ranges larger than /24 may be required. When planning the network, current as well as future growth should be <highlight>taken into consideration.</highlight></quote></message><suggestion>Use <quote>consider</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>671</line></location>
+        <message>Do not use
+            <quote>in the event of</quote> here:
+            <quote>No RAID 1. Instead, copy the OS installation from the OS DOM to the “backup” DOM and have it ready for an alternate boot <highlight>in the event of</highlight> a failure on the main DOM. To accomplish this, follow these instructions after the SUSE Linux Enterprise Server installation is complete.</quote></message><suggestion>Use <quote>if</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>712</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>Note: Consider setting a process in place to synchronize these devices periodically <highlight>as well as</highlight> after major changes (ex: patch updates).</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>912</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>See Appendix B and C for illustrations on data and journal profile changes <highlight>as well as</highlight> the policy.cfg file used in the installation.</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+    <result type="warning">
+            <location><file>MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml</file><line>1032</line></location>
+        <message>Do not use
+            <quote>as well as</quote> here:
+            <quote>As described in this implementation guide <highlight>as well as</highlight> the SUSE Enterprise Storage documentation, a minimum of four OSD nodes is recommended, with the default replication setting of 3. This will ensure cluster operation, even with the loss of a complete OSD node. Generally speaking, performance of the overall cluster increases as more properly configured OSD nodes are added.</quote></message><suggestion>Use <quote>and</quote>
+            instead.</suggestion></result>
+  </part>
+</results>

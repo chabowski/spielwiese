@@ -1,0 +1,1959 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article xml:base="MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml" lang="en">
+  <section>
+    <title>Introduction</title>
+
+    <para>The objective of this guide is to present a step-by-step guide on
+    how to implement SUSE Enterprise Storage (v4) on Supermicro hardware
+    platforms.</para>
+
+    <para>It is suggested that the document be read in its entirety, along
+    with the supplemental appendix information before attempting the
+    process.</para>
+
+    <para>The platform is built and deployed to show customers the ability to
+    deploy a robust SUSE Enterprise Storage cluster on the Supermicro
+    platform. Its goal is to show architectural best practices and how to
+    build a Ceph-based cluster that will support the implementation of two key
+    gateways: iSCSI and RADOS (RGW).</para>
+
+    <para>Upon completion of the steps in this document, a working SUSE
+    Enterprise Storage (v4) deployment will be operational as described in the
+    <ulink url="https://www.suse.com/documentation/ses-4/">SUSE Enterprise
+    Storage 4 Deployment and Administration Guide</ulink>.</para>
+
+    <para>There are several methods for installing a Ceph cluster with SUSE
+    Enterprise Storage. This guide demonstrates SUSE Enterprise Storage’s
+    preferred approach, based on <emphasis>Salt</emphasis> technology.</para>
+
+    <section>
+      <title>Configuration</title>
+
+      <para>The reference architecture described was built as a joint effort
+      between Ingram Micro, Supermicro and SUSE. The equipment was deployed to
+      Ingram Micro’s briefing center in Buffalo, NY where the SUSE Enterprise
+      Storage software-defined solution was installed and tested.</para>
+
+      <para>The SUSE Enterprise Storage cluster leveraged three family of
+      Supermicro servers. The role/functionality of each SUSE Enterprise
+      Storage component will be explained in more detail in the architectural
+      overview section.</para>
+
+      <para>For Ceph admin and monitor functions:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>One Supermicro <ulink url="https://www.supermicro.com/products/system/2u/6028/sys-6028tr-htr.cfm">SuperServer
+          6028TR-HTR</ulink> system with 4-node capacity.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>For RADOS (RGW) and iSCSI Gateway functions:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Two Supermicro <ulink url="https://www.supermicro.com/products/system/1U/1028/SYS-1028TP-DTR.cfm">SuperServer
+          1028TP-DTR</ulink> systems with 2-node capacity.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>For the Object Store Device (OSD) function:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Four Supermicro <ulink url="https://www.supermicro.com/products/system/2U/6028/SSG-6028R-E1CR24L.cfm">SuperStorage
+          Server 6028R-E1CR24L</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Switching infrastructure:</title>
+
+      <itemizedlist>
+        <listitem>
+          <para>Cisco Nexus 9000 switches.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Software:</title>
+
+      <itemizedlist>
+        <listitem>
+          <para>SUSE Enterprise Storage 4. (Please note: The SUSE Enterprise
+          Storage subscription includes a limited use [for SUSE Enterprise
+          Storage] entitlement for SUSE Linux Enterprise Server as
+          well.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Target Audience</para>
+
+      <para>This reference architecture is focused on administrators who
+      deploy software defined storage solutions within their data centers and
+      making the different storage services accessible to their own customer
+      base. By following this document as well as those referenced herein, the
+      administrator should have a full view of the SUSE Enterprise Storage
+      architecture, deployment and administrative tasks, with a specific set
+      of recommendations for deployment of the hardware and networking
+      platform.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Business problem and business value</title>
+
+    <para>SUSE Enterprise Storage delivers a highly scalable, resilient,
+    self-healing storage environment designed for large scale environments
+    ranging from hundreds of terabytes to petabytes. This software defined
+    storage product can reduce IT costs by leveraging industry standard
+    servers to present unified storage servicing block, file, and object
+    protocols. Having storage that can meet the current needs and requirements
+    of the data center while supporting topologies and protocols demanded by
+    new web-scale applications, enables administrators to support the
+    ever-increasing storage requirements of the enterprise with ease.</para>
+
+    <section>
+      <title>Business problem</title>
+
+      <para>Customers of all sizes face a major storage challenge: While the
+      overall cost per terabyte of physical storage has gone down over the
+      years, a data growth explosion is taking place driven by the need to
+      access and leverage new data sources (ex: external sources such as
+      social media) and the ability to ‘manage’ new data types (ex:
+      unstructured or object data). These ever increasing “data lakes” need
+      different access methods: File, block, or object.</para>
+
+      <para>Addressing these challenges with legacy storage solutions would
+      require either a number of specialized products (usually driven by
+      access method) with traditional protection schemes (ex: RAID). These
+      solutions struggle when scaling from terabytes to petabytes at
+      reasonable cost and performance levels.</para>
+    </section>
+
+    <section>
+      <title>Business value</title>
+
+      <para>This software defined storage solution enables transformation of
+      the enterprise infrastructure by providing a unified platform where
+      structured and unstructured data can co-exist and be accessed as file,
+      block, or object depending on application requirements. The combination
+      of open-source software (Ceph) and industry standard servers reduce cost
+      while providing the on-ramp to unlimited scalability needed to keep up
+      with future demands.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Requirements</title>
+
+    <para>Legacy enterprise storage systems established a high threshold of
+    reliability, availability, and serviceability (RAS) that customers now
+    demand from software defined storage solutions. Focusing on these
+    capabilities help SUSE make open source technologies consumable by the
+    enterprise. When combined with the Supermicro platform, the result is a
+    solution that meets customer's expectation.</para>
+
+    <section>
+      <title>Functional requirements</title>
+
+      <para>A SUSE Enterprise Storage solution is:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Simple to setup and deploy, within the documented guidelines
+          of system hardware, networking and environmental
+          prerequisites.</para>
+        </listitem>
+
+        <listitem>
+          <para>Adaptable to the physical and logical constraints needed by
+          the business, both initially and as needed over time for
+          performance, security, and scalability concerns.</para>
+        </listitem>
+
+        <listitem>
+          <para>Resilient to changes in physical infrastructure components,
+          caused by failure or required maintenance.</para>
+        </listitem>
+
+        <listitem>
+          <para>Capable of providing optimized object and block services to
+          client access nodes, either directly or through gateway
+          services.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section>
+    <title>Architectural overview</title>
+
+    <para>This architecture overview section complements the <ulink url="https://www.suse.com/docrep/documents/1mdg7eq2kz/suse_enterprise_storage_technical_overview_wp.pdf">SUSE
+    Enterprise Storage Technical Overview</ulink> document available online
+    which presents the concepts behind software defined storage and Ceph as
+    well as a quick start guide (non-platform specific).</para>
+
+    <section>
+      <title>Solution architecture</title>
+
+      <para>SUSE Enterprise Storage provides unified block, file and object
+      access based on Ceph. Ceph is a distributed storage solution designed
+      for scalability, reliability and performance. A critical component of
+      Ceph is the RADOS object storage. RADOS enables a number of object
+      storage nodes to function together to store and retrieve data from the
+      cluster using object storage techniques. The result is a storage
+      solution that is abstracted from the hardware.</para>
+
+      <para>Ceph supports both native and traditional client access. The
+      native clients are aware of the storage topology and communicate
+      directly with the storage daemons, resulting in horizontally scaling
+      performance. Non-native protocols, such as iSCSI, S3, and NFS require
+      the use of gateways. These gateways can scale horizontally using load
+      balancing techniques.</para>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata contentdepth="257" contentwidth="486" fileref="clip_image002_1kjne54l.jpg"/>
+              
+            
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para>Figure 1. Ceph architecture diagram</para>
+
+      <para>In addition to the required network interfaces, the minimum SUSE
+      Enterprise Storage cluster comprises of a minimum of one administration
+      server (physical or virtual), four object storage device nodes (OSDs),
+      three monitor nodes (MONs), and one or more Ceph Object Gateway.
+      Specific to our implementation:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>One of the nodes on the Supermicro <ulink url="https://www.supermicro.com/products/system/2u/6028/sys-6028tr-htr.cfm">SuperServer
+          6028TR-HTR</ulink> server is deployed as our administrative physical
+          host server. The administration server is used to deploy and
+          configure SUSE Enterprise Storage on the other nodes (OSDs, MONs and
+          Object Gateways). openAttic, the central management system which
+          supports Ceph needs to be installed on the administration server as
+          well.</para>
+        </listitem>
+
+        <listitem>
+          <para>The other three nodes on the same Supermicro <ulink url="https://www.supermicro.com/products/system/2u/6028/sys-6028tr-htr.cfm">SuperServer
+          6028TR-HTR</ulink> server are deployed as monitor (MONs) nodes.
+          Monitor nodes maintain information about the cluster health state, a
+          map of the other monitor nodes and a CRUSH map. They also keep
+          history of changes performed to the cluster.</para>
+        </listitem>
+
+        <listitem>
+          <para>One pair of nodes on a Supermicro <ulink url="https://www.supermicro.com/products/system/1U/1028/SYS-1028TP-DTR.cfm">SuperServer
+          1028TP-DTR</ulink> server acts as our iSCSI gateway. iSCSI is a
+          storage area network (SAN) protocol that allows clients (called
+          initiators) to send SCSI command to SCSI storage devices (targets)
+          on remote servers. SUSE Enterprise Storage Server includes a
+          facility that open Ceph storage management to heterogeneous clients
+          such as Microsoft Windows and VMware vSphere through the iSCSI
+          protocol. These systems may scale horizontally through client usage
+          of multi-path technology.</para>
+        </listitem>
+
+        <listitem>
+          <para>Another set of the same type of Supermicro server performs the
+          duties of RADOS gateway. As the documentation states (<ulink url="https://www.suse.com/documentation/ses-4/book_storage_admin/data/cha_ceph_gw.html">Ceph
+          RADOS Gateway</ulink>) “<emphasis>Ceph RADOS Gateway is an object
+          storage interface built on top of librgw to provide applications
+          with a RESTful gateway to Ceph Storage Clusters.”</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para>Data is stored on four Supermicro <ulink url="https://www.supermicro.com/products/system/2U/6028/SSG-6028R-E1CR24L.cfm">SuperStorage
+          Server 6028R-E1CR24L</ulink> servers categorized as storage nodes.
+          The nodes contain multiple storage devices that are each assigned an
+          Object Storage Daemon (OSD). The OSD daemon assigned to the OSD
+          stores data and manages the data replication and rebalancing
+          processes OSD daemons also communicate with the monitor (MON) nodes
+          and provide them with the state of the other OSD daemons.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Networking architecture</para>
+
+      <para>A software-defined storage solution is as reliable and performant
+      as its slowest and least redundant component. This makes it important to
+      design and implement a robust, high performance storage network
+      infrastructure. From a network perspective for Ceph, this translates
+      into:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Separation of cluster (backend) and client-facing network
+          traffic and isolate Ceph OSD daemon replication activities from Ceph
+          client to storage cluster access.</para>
+        </listitem>
+
+        <listitem>
+          <para>Redundancy and capacity in the form of bonded network
+          interfaces connected to Cisco Nexus 9000 switches.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Figure 2 (next page) shows the logical layout of the traditional
+      Ceph cluster implementation.</para>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata contentdepth="339" contentwidth="648" fileref="clip_image004_1kjne54l.jpg"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para>Figure 2. Sample networking diagram for Ceph cluster</para>
+    </section>
+
+    <section>
+      <title>Network/IP address scheme</title>
+
+      <para>Specific to our installation, we implemented the following naming
+      and addressing scheme.</para>
+
+      <informaltable>
+        <tgroup cols="5">
+          <thead>
+            <row>
+              <entry>Function</entry>
+
+              <entry>Hostname</entry>
+
+              <entry>Primary Network</entry>
+
+              <entry>Cluster Network</entry>
+
+              <entry>IPMI Network</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row valign="top">
+              <entry><para><emphasis>Admin (Host)</emphasis></para></entry>
+
+              <entry><para>admin.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.10</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.110</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>Monitor</emphasis></para></entry>
+
+              <entry><para>mon1.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.11</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.111</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>Monitor</emphasis></para></entry>
+
+              <entry><para>mon2.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.12</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.112</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>Monitor</emphasis></para></entry>
+
+              <entry><para>mon3.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.13</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.113</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>RADOS Gateway</emphasis></para></entry>
+
+              <entry><para>rgw1.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.14</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.114</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>RADOS Gateway</emphasis></para></entry>
+
+              <entry><para>rgw2.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.15</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.115</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>iSCSI Gateway</emphasis></para></entry>
+
+              <entry><para>igw1.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.16</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.116</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>iSCSI Gateway</emphasis></para></entry>
+
+              <entry><para>igw2.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.17</para></entry>
+
+              <entry><para>N/A</para></entry>
+
+              <entry><para>192.168.145.117</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>OSD Node</emphasis></para></entry>
+
+              <entry><para>osd1.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.21</para></entry>
+
+              <entry><para>192.168.146.21</para></entry>
+
+              <entry><para>192.168.145.121</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>OSD Node</emphasis></para></entry>
+
+              <entry><para>osd2.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.22</para></entry>
+
+              <entry><para>192.168.146.22</para></entry>
+
+              <entry><para>192.168.145.122</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>OSD Node</emphasis></para></entry>
+
+              <entry><para>osd3.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.23</para></entry>
+
+              <entry><para>192.168.146.23</para></entry>
+
+              <entry><para>192.168.145.123</para></entry>
+            </row>
+
+            <row valign="top">
+              <entry><para><emphasis>OSD Node</emphasis></para></entry>
+
+              <entry><para>osd4.suse.imsc.int</para></entry>
+
+              <entry><para>192.168.145.24</para></entry>
+
+              <entry><para>192.168.146.24</para></entry>
+
+              <entry><para>192.168.145.124</para></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+
+  <section>
+    <title>Component model</title>
+
+    <para>The preceding sections provided significant details on the both the
+    overall Supermicro hardware as well as an introduction to the Ceph
+    software architecture. In this section, the focus is on the SUSE
+    components: SUSE Linux Enterprise Server (SLES), SUSE Enterprise Storage
+    (SES), and the Subscription Management Tool (SMT).</para>
+
+    <para>Component overview (SUSE)</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>SUSE Linux Enterprise Server – A world class secure, open source
+        server operating system, equally adept at powering physical, virtual,
+        or cloud-based mission-critical workloads. Service Pack 2 further
+        raises the bar in helping organizations to accelerate innovation,
+        enhance system reliability, meet tough security requirements and adapt
+        to new technologies.</para>
+      </listitem>
+
+      <listitem>
+        <para>Subscription Management Tool for SLES12 SP2 – allows enterprise
+        customers to optimize the management of SUSE Linux Enterprise (and
+        extensions such as SUSE Enterprise Storage) software updates and
+        subscription entitlement. It establishes a proxy system for SUSE
+        Customer Center with repository and registration targets.</para>
+      </listitem>
+
+      <listitem>
+        <para>SUSE Enterprise Storage – Provided as an extension on top of
+        SUSE Linux Enterprise Server, this intelligent software-defined
+        storage solution, powered by Ceph technology with enterprise
+        engineering and support from SUSE enables customers to transform
+        enterprise infrastructure to reduce costs while providing unlimited
+        scalability.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Deployment</title>
+
+    <para>This deployment section should be seen as a supplement online <ulink url="https://www.suse.com/documentation/">documentation.</ulink>
+    Specifically, the <ulink url="https://www.suse.com/documentation/ses-4/book_storage_admin/data/book_storage_admin.html">SUSE
+    Enterprise Storage 4 Administration and Deployment Guide</ulink> as well
+    as <ulink url="https://www.suse.com/documentation/sles-12/book_sle_admin/data/book_sle_admin.html">SUSE
+    Linux Enterprise Server Administration Guide</ulink> and <ulink url="https://www.suse.com/documentation/sles-12/book_smt/data/book_smt.html">Subscription
+    Management Tool (SMT) for SLES 12 SP2</ulink>. Thus, the emphasis is on
+    specific design and configuration choices.</para>
+
+    <section>
+      <title>Network Deployment overview/outline</title>
+
+      <para>The following considerations for the network configuration should
+      be attended to:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Ensure that all network switches are updated with consistent
+          firmware versions.</para>
+        </listitem>
+
+        <listitem>
+          <para>Configure 802.3ad for system port bonding and vLAG between the
+          switches, plus enable jumbo frames on cluster network interfaces.
+          <emphasis role="underline">See Appendix E for the switch-side
+          configuration</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Network IP addressing and IP ranges need proper planning. In
+          optimal environments, a single storage subnet should be used for all
+          SUSE Enterprise Storage nodes on the primary network, with a
+          separate, single subnet for the cluster network. Depending on the
+          size of the installation, ranges larger than /24 may be required.
+          When planning the network, current as well as future growth should
+          be taken into consideration.</para>
+        </listitem>
+
+        <listitem>
+          <para>Setup DNS A records for all nodes. Decide on subnets and VLANs
+          and configure the switch ports accordingly.</para>
+        </listitem>
+
+        <listitem>
+          <para>Ensure that you have access to a valid, reliable NTP service,
+          as this is a critical requirement for all nodes. It is recommended
+          to enable NTP on the admin node and point other nodes to it for time
+          synchronization.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>HW Deployment configuration (suggested)</title>
+
+      <para>The following considerations for the hardware platforms should be
+      attended to:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Ensure Boot Mode is set to ‘UEFI’ for all the physical nodes
+          that comprise the SUSE Enterprise Storage Cluster.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata contentdepth="486" contentwidth="629" fileref="clip_image006_1kjne54l.jpg"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para><emphasis role="bold">Figure 3. UEFI settings</emphasis></para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Follow the <ulink url="https://www.supermicro.com/datasheet/datasheet_SuperDOM.pdf">Supermicro
+          SATA DOM (SuperDOM) Edurance Use Cases</ulink> recommendations for
+          the OS installation:</para>
+        </listitem>
+
+        <listitem>
+          <para>Verify BIOS/uEFI level on the physical servers correspond to
+          those on the SUSE YES certification for the Supermicro
+          platform:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>SYS-6028TR-HTR - <ulink url="https://www.suse.com/nbswebapp/yesBulletin.jsp?bulletinNumber=145180">https://www.suse.com/nbswebapp/yesBulletin.jsp?bulletinNumber=145180</ulink></para>
+            </listitem>
+
+            <listitem>
+              <para>SYS-1028TP-DTR - <ulink url="https://www.suse.com/nbswebapp/yesBulletin.jsp?bulletinNumber=145197">https://www.suse.com/nbswebapp/yesBulletin.jsp?bulletinNumber=145197</ulink></para>
+            </listitem>
+
+            <listitem lang="es-PR">
+              <para>6028R-E1CR24L - <ulink url="https://www.suse.com/nbswebapp/yesBulletin.jsp?bulletinNumber=145178">https://www.suse.com/nbswebapp/yesBulletin.jsp?bulletinNumber=145178</ulink></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Operating System Deployment and Configuration</title>
+
+      <para>Installation of the Operating System is completed using the
+      Supermicro remote console. We mount the ISO image and proceed with boot
+      to the Operating System:</para>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata contentdepth="293" contentwidth="506" fileref="clip_image008_1kjne54l.jpg"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para><emphasis role="bold">Figure 4. Mounting ISO media via Remote
+      Console</emphasis></para>
+
+      <para><inlinemediaobject>
+          <imageobject>
+            <imagedata contentdepth="314" contentwidth="507" fileref="clip_image010_1kjne54l.png"/>
+          </imageobject>
+        </inlinemediaobject></para>
+
+      <para><emphasis role="bold">Figure 5. Booting from Virtual
+      CDROM</emphasis></para>
+
+      <para>The Operating System will be installed on the SATA Disk on Module
+      (SuperDOM). Based on best practices for SuperDOM devices:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>No swap space or swap files on the SuperDOM – In general,
+          avoid excessive writes. The nodes have three 3.5” disk drive slots
+          where HDD/SDDs can be placed for any write-intensive
+          activity.</para>
+        </listitem>
+
+        <listitem>
+          <para>No RAID 1. Instead, copy the OS installation from the OS DOM
+          to the “backup” DOM and have it ready for an alternate boot in the
+          event of a failure on the main DOM. To accomplish this, follow these
+          instructions after the SUSE Linux Enterprise Server installation is
+          complete.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Boot from the SLES 12 SP2 DVD and select Rescue
+              Mode.</para>
+            </listitem>
+
+            <listitem>
+              <para>Enter <emphasis>root</emphasis> at the login prompt and
+              hit Enter.</para>
+            </listitem>
+
+            <listitem>
+              <para>Determine the device names for the Supermicro SATA DOMs
+              using <emphasis>lsscsi</emphasis>.</para>
+            </listitem>
+
+            <listitem>
+              <para>Copy the entire drive contents from the boot drive to the
+              backup drive using the command <emphasis>dd if=&lt;OS drive
+              device name&gt; of=&lt;backup drive device name&gt;
+              bs=4M</emphasis></para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>Example: <emphasis>dd if=/dev/sda of=/dev/sdb
+                  bs=4M</emphasis></para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+
+            <listitem>
+              <para>Reboot.</para>
+            </listitem>
+
+            <listitem>
+              <para>Note: Consider setting a process in place to synchronize
+              these devices periodically as well as after major changes (ex:
+              patch updates).</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+
+      <para>Once the Operating System installation starts, perform a minimal
+      installation and ensure that the following actions take place:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Configure bonded interfaces. See <emphasis role="underline">Appendix D</emphasis> for OS network
+          configuration.</para>
+        </listitem>
+
+        <listitem>
+          <para>Register the system against your SMT server</para>
+        </listitem>
+
+        <listitem>
+          <para>De-select AppArmor pattern from the minimal
+          installation.</para>
+        </listitem>
+
+        <listitem>
+          <para>When creating the filesystem structure for the root disk,
+          de-select the option to have a separate <emphasis>/home</emphasis>
+          directory.</para>
+        </listitem>
+
+        <listitem>
+          <para>Disable the firewall.</para>
+        </listitem>
+
+        <listitem>
+          <para>After installation is complete, run <emphasis>zypper
+          up</emphasis> to ensure all current updates are applied.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>SW Deployment configuration (DeepSea and Salt)</title>
+
+      <para><emphasis>Salt</emphasis> along with <emphasis>DeepSea</emphasis>
+      is a stack of components that help deploy and manage server
+      infrastructure. It is very scalable, fast, and relatively easy to get
+      running.</para>
+
+      <para>There are three key <emphasis>Salt</emphasis> imperatives that
+      need to be followed and are described in detail in section 4 (<ulink url="https://www.suse.com/documentation/ses-4/book_storage_admin/data/ceph_install_saltstack.html">Deploying
+      with DeepSea and Salt</ulink> ):</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>The <emphasis>Salt Master</emphasis> is the host that controls
+          the entire cluster deployment. Ceph itself should NOT be running on
+          the master as all resources should be dedicated to Salt master
+          services. In our scenario, we used the Admin server as the Salt
+          master.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Salt minions</emphasis> are nodes controlled by Salt
+          master. OSD, monitor, and gateway nodes are all Salt minions in this
+          installation.</para>
+        </listitem>
+
+        <listitem>
+          <para>Salt minions need to correctly resolve the Salt master’s host
+          name over the network. This can be achieved using unique DNS names
+          for the various interfaces or by having the unique names in
+          /etc/hosts files local to each node.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para><emphasis>DeepSea </emphasis>consists of series of
+      <emphasis>Salt</emphasis> files to automate the deployment and
+      management of a Ceph cluster. It consolidates the administrator's
+      decision making in a single location around cluster assignment, role
+      assignment and profile assignment. <emphasis>Deepsea</emphasis> collects
+      each set of tasks into a goal or stage.</para>
+
+      <para>The following steps, performed in order will be used for this
+      reference implementation:</para>
+
+      <para>Base assumption: SLES12 SP2 and SUSE Enterprise Storage 4
+      extension installed and register on each node of the cluster (including
+      the Admin server):</para>
+
+      <screen format="linespecific">Install <emphasis>DeepSea</emphasis> on the Salt master (our Admin VM):
+<command moreinfo="none">zypper in deepsea</command></screen>
+
+      <para>This command installs the <emphasis>salt-master</emphasis> package
+      on the Admin node as well</para>
+
+      <para><screen format="linespecific">Start the <emphasis>salt-master</emphasis> service and enable:
+<command moreinfo="none">systemctl start salt-master.service
+systemctl enable salt-master.service</command>
+          </screen></para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Install the <emphasis>salt-minion</emphasis> on all cluster
+          nodes (including the Admin):<screen format="linespecific">zypper in salt-minion</screen></para>
+        </listitem>
+
+        <listitem>
+          <para>Configure all minions to connect to the Salt master: Modify
+          the entry for <emphasis>master</emphasis> in the
+          <emphasis>/etc/salt/minion</emphasis></para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Ex: In our case: <emphasis>master:
+              admin.suse.imsc.int</emphasis></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>Start the <emphasis>salt-minion</emphasis> service and
+          enable:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis>systemctl start
+              salt-minion.service</emphasis></para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis>systemctl enable
+              salt-minion.service</emphasis></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>Verify that the Salt state file
+          <emphasis>/srv/pillar/ceph/master_minion.sls</emphasis> points to
+          the Salt master – Restart the master service if changes are made
+          (<emphasis>systemctl restart salt-master.service</emphasis>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Accept all salt keys on the Salt master: <emphasis>salt-key
+          --accept-all </emphasis>and verify their acceptance
+          (<emphasis>salt-key --list-all</emphasis>)</para>
+        </listitem>
+
+        <listitem>
+          <para>If the OSD nodes were used in a prior installation, zap ALL
+          the OSD disks (<emphasis>ceph-disk zap
+          &lt;DISK&gt;</emphasis>)</para>
+        </listitem>
+
+        <listitem>
+          <para>At this point, you can <emphasis role="underline">deploy and
+          configure the cluster</emphasis>:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Prepare the cluster: <emphasis>salt-run state.orch
+              ceph.stage.prep</emphasis></para>
+            </listitem>
+
+            <listitem>
+              <para>Run the discover stage to collect data from all minions
+              and create configuration fragments:</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para><emphasis>salt-run state.orch
+                  ceph.stage.discovery</emphasis></para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+
+            <listitem>
+              <para>As the discovery process completes, there are two
+              cluster-specific changes to be performed:</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>The proposed data and journal profile proposed for the
+                  Supermicro OSD hosts does not account for the NVME and the
+                  SATA DoM devices.</para>
+                </listitem>
+
+                <listitem>
+                  <para>A <emphasis>/srv/pillar/ceph/proposals/policy.cfg
+                  </emphasis>file needs to be created to instruct Salt on the
+                  location and configuration files to use for the different
+                  components that make up the Ceph cluster (Salt master,
+                  admin, monitor, and OSDs).</para>
+                </listitem>
+
+                <listitem>
+                  <para>See Appendix B and C for illustrations on data and
+                  journal profile changes as well as the
+                  <emphasis>policy.cfg</emphasis> file used in the
+                  installation.</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+
+            <listitem>
+              <para>Next, proceed with the configuration stage to parse the
+              <emphasis>policy.cfg</emphasis> file and merge the included
+              files into the final form</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para><emphasis>salt-run state.orch
+                  ceph.stage.configure</emphasis></para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+
+            <listitem>
+              <para>The last two steps manage the actual deployment. Deploy
+              monitors and ODS daemons first:</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para><emphasis>salt-run state.orch ceph.stage deploy
+                  </emphasis>(Note: The command can take some time to
+                  complete, depending on the size of the cluster).</para>
+                </listitem>
+
+                <listitem>
+                  <para>Check for successful completion via: <emphasis>ceph
+                  –s</emphasis></para>
+                </listitem>
+
+                <listitem>
+                  <para>Finally, deploy the services(gateways [iSCSI, RADOS],
+                  and openATTIC to name a few): <emphasis>salt-run state.orch
+                  ceph.stage.services</emphasis></para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+
+      <para><emphasis role="bold">Post-deployment quick test</emphasis></para>
+
+      <para>The steps below can be used (regardless of the deployment method)
+      to validate the overall cluster health:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>ceph status </emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>ceph osd pool create test 4096 </emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>rados bench –p test 300 write
+          --no-cleanup</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>rados bench –p test 300 seq</emphasis></para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Once the tests are complete, you can remove the test pool
+      via:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>ceph osd pool delete test
+          --yes-i-really-really-mean-it</emphasis></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+  <section>
+    <title>Deployment Considerations</title>
+
+    <para>Some final considerations before deploying your own version of a
+    SUSE Enterprise Storage cluster, based on Ceph. As previously stated,
+    please refer to the <ulink url="https://www.suse.com/documentation/ses-4/book_storage_admin/data/book_storage_admin.html">Administration
+    and Deployment Guide</ulink></para>
+
+    <itemizedlist>
+      <listitem>
+        <para>This guide is focused on <emphasis>Salt</emphasis> as the
+        preferred deployment mechanism.<emphasis> </emphasis>Do not mix
+        deployment methods within a cluster.</para>
+      </listitem>
+
+      <listitem>
+        <para>With the default replication setting of 3, remember that the
+        client-facing network will have about half or less of the traffic of
+        the backend network. This is especially true when component failures
+        occur or rebalancing happens on the OSD nodes. For this reason, it is
+        important not to under provision this critical cluster and service
+        resource.</para>
+      </listitem>
+
+      <listitem>
+        <para>It is important to maintain the minimum number of MON nodes at
+        three. As the cluster increases in size, it is best to increment in
+        pairs, keeping the total number of Mon nodes as an odd number.
+        However, only really large or very distributed clusters would likely
+        need beyond the 3 Mon nodes cited in this reference implementation.
+        For performance reasons, it is recommended to use distinct nodes for
+        the MON roles, so that the OSD nodes can be scaled as capacity
+        requirements dictate.</para>
+      </listitem>
+
+      <listitem>
+        <para>As described in this implementation guide as well as the SUSE
+        Enterprise Storage documentation, a minimum of four OSD nodes is
+        recommended, with the default replication setting of 3. This will
+        ensure cluster operation, even with the loss of a complete OSD node.
+        Generally speaking, performance of the overall cluster increases as
+        more properly configured OSD nodes are added.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Appendix A: Bill of Materials</title>
+
+    <para>Component / System</para>
+
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="right" colname="c1" colwidth="25*"/>
+
+        <colspec colname="c2" colwidth="6*"/>
+
+        <colspec colname="c3" colwidth="19*"/>
+
+        <colspec colname="c4" colwidth="50*"/>
+
+        <tbody>
+          <row valign="top">
+            <entry><para><emphasis role="bold"><emphasis>Role</emphasis></emphasis></para></entry>
+
+            <entry><para><emphasis role="bold">Qty</emphasis></para></entry>
+
+            <entry><para><emphasis role="bold">Component</emphasis></para></entry>
+
+            <entry><para><emphasis role="bold">Notes</emphasis></para></entry>
+          </row>
+
+          <row valign="top">
+            <entry><para><emphasis>Admin/MON servers</emphasis></para></entry>
+
+            <entry><para>1*</para></entry>
+
+            <entry><para>SYS-6028TR-HTR</para></entry>
+
+            <entry><para>*One enclosure with 4 blade nodes. Node consists
+            of:</para><itemizedlist>
+                <listitem>
+                  <para>1X E5-2623V4 26G CPU</para>
+                </listitem>
+
+                <listitem>
+                  <para>2X 8GB DD4-2400 ECC REG DIMM</para>
+                </listitem>
+
+                <listitem>
+                  <para>2X SMC SATA3 DOM 64GB MLC</para>
+                </listitem>
+
+                <listitem>
+                  <para>1X Dual-port 10G Ethernet w SFP+ W/CDR
+                  (AOC-STGN-I2S)</para>
+                </listitem>
+
+                <listitem>
+                  <para>Assembly and Testing</para>
+                </listitem>
+              </itemizedlist></entry>
+          </row>
+
+          <row valign="top">
+            <entry><para><emphasis>Gateways</emphasis></para></entry>
+
+            <entry><para>2**</para></entry>
+
+            <entry><para>SYS-1028TP-DTR</para></entry>
+
+            <entry><para>** One enclosure with 2 blade nodes. Node consists
+            of:</para><itemizedlist>
+                <listitem>
+                  <para>1X E5-2620V4 2.1G CPU</para>
+                </listitem>
+
+                <listitem>
+                  <para>8X 8GB DDR4-2400 ECC REG DIMM</para>
+                </listitem>
+
+                <listitem>
+                  <para>1X SMC SATA3 DOM 64GB MLC</para>
+                </listitem>
+
+                <listitem>
+                  <para>1X Dual-port 10G Ethernet w SFP+ W/CDR
+                  (AOC-STGN-I2S)</para>
+                </listitem>
+
+                <listitem>
+                  <para>Assembly and Testing</para>
+                </listitem>
+              </itemizedlist><para>Note: 2 enclosures = 4 gateway nodes (2
+            iSCSI, 2 RGW)</para></entry>
+          </row>
+
+          <row valign="top">
+            <entry><para><emphasis>OSD Hosts</emphasis></para></entry>
+
+            <entry><para>4</para></entry>
+
+            <entry><para>SSG-6028R-E1CR24L</para></entry>
+
+            <entry><para>Each servers consists of:</para><itemizedlist>
+                <listitem>
+                  <para>2X E2630V4 2.2G CPU</para>
+                </listitem>
+
+                <listitem>
+                  <para>8X 32GB DD4-2400 ECC REG DIMM</para>
+                </listitem>
+
+                <listitem>
+                  <para>2X SMC SATA3 DOM 64GB MLC</para>
+                </listitem>
+
+                <listitem lang="es-US">
+                  <para>24X Toshiba 3.5” 6TB 7.2K RPM SATA 128M 512e
+                  HDD</para>
+                </listitem>
+
+                <listitem lang="es-US">
+                  <para>2X Intel DC P3600 400GB NVMe PCIe3.0 , MLC AIC
+                  SSD</para>
+                </listitem>
+
+                <listitem>
+                  <para>1X Dual-port 10G Ethernet w SFP+ W/CDR
+                  (AOC-STGN-I2S)</para>
+                </listitem>
+
+                <listitem>
+                  <para>1X `SIOM 2-port 10G SFP+, Intel 82599ES Controller
+                  Add-on Card (AOC-MTGN-I2S)</para>
+                </listitem>
+
+                <listitem>
+                  <para>Assembly and Testing</para>
+                </listitem>
+              </itemizedlist></entry>
+          </row>
+
+          <row valign="top">
+            <entry><para><emphasis>Software</emphasis></para></entry>
+
+            <entry><para>1</para></entry>
+
+            <entry><para>SUSE Enterprise Storage Subscription</para><para>Base
+            configuration</para></entry>
+
+            <entry><para>10 subscriptions provided with base configuration
+            with the folloging configuration:</para><itemizedlist>
+                <listitem>
+                  <para>Up to four OSD nodes</para>
+                </listitem>
+
+                <listitem>
+                  <para>Up to six instances for SES infrastructure nodes (MON,
+                  Gateways, Admin)</para>
+                </listitem>
+              </itemizedlist></entry>
+          </row>
+
+          <row valign="top">
+            <entry><para><emphasis>Software</emphasis></para></entry>
+
+            <entry><para>2</para></entry>
+
+            <entry><para>SUSE Enterprise Storage Subscription Expansion
+            nodes</para></entry>
+
+            <entry><para>2 additional subscriptions to cover remaining SES
+            infrastructure nodes</para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+    <para>Note: The computer room where the equipment is located has redundant
+    networking equipment allowing the Ceph cluster to be configured according
+    to SUSE Enterprise Storage best practices.</para>
+  </section>
+
+  <section>
+    <title>Appendix B: OSD Drive and Journal Proposal Changes</title>
+
+    <para>The proposal generated by <emphasis>salt-run state.orch
+    ceph.stage.discovery </emphasis>does not accurately reflect the
+    environment. The file is listed below highlighting needed changes. Entries
+    with /* */ are author’s comments.</para>
+
+    <para>storage:</para>
+
+    <para><emphasis role="highlight">data+journals: []</emphasis> /*NOTE:
+    Disks and journals should be listed under the data+journals category
+    */</para>
+
+    <para><emphasis role="highlight">osds:</emphasis> /* NOTE: No drives
+    should be under the osds entry. */</para>
+
+    <para><emphasis role="highlight">-
+    /dev/disk/by-id/ata-Supermicro_SSD_SMC0515D93716CAM3007</emphasis> /*
+    NOTE: Should not be listed */</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81dee</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81032</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81e0a</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81dfe</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf01991</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81033</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81035</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b8810e9</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81039</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b701f01</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b701f03</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b8810ea</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b78171f</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf01a20</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf01997</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81023</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf80ef7</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81dfd</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf0193a</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81034</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81de9</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81026</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81024</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81025</para>
+
+    <para><emphasis role="highlight">-
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</emphasis>
+    /*NVMEs should be journals */</para>
+
+    <para><emphasis role="highlight">-
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</emphasis>
+    /*NVME should be journals */</para>
+
+    <para>We proceeded to make changes to the file so that we have a
+    successful <emphasis>configure</emphasis> step. The modified file
+    below:</para>
+
+    <para>storage:</para>
+
+    <para>data+journals:</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81dee:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81032:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81e0a:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81dfe:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf01991:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81033:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81035:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b8810e9:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81039:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b701f01:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b701f03:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b8810ea:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD6351009T400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973b78171f:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf01a20:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf01997:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81023:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf80ef7:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81dfd:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf0193a:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81034:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bd81de9:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81026:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81024:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>- /dev/disk/by-id/scsi-3500003973bf81025:
+    /dev/disk/by-id/nvme-SNVMe_INTEL_SSDPEDME40CVMD635100DM400AGN</para>
+
+    <para>osds: []</para>
+
+    <para>NOTE: There is ONE space between the colon separating the OSD and
+    journal entries. Accurate spacing is important with
+    <emphasis>Salt</emphasis>.</para>
+  </section>
+
+  <section>
+    <title>Appendix C: Policy.cfg</title>
+
+    <para>## policy.cfg file</para>
+
+    <para>cluster-ceph/cluster.sls</para>
+
+    <para>role-master/cluster/adminvm01.suse.imsc.int.sls</para>
+
+    <para>role-admin/cluster/adminvm01.suse.imsc.int.sls</para>
+
+    <para>role-mon/stack/default/ceph/minions/mon*.yml</para>
+
+    <para>role-mon/cluster/mon*.sls</para>
+
+    <para>role-igw/stack/default/ceph/minions/igw*.yml</para>
+
+    <para>role-igw/cluster/igw*.sls</para>
+
+    <para>role-rgw/cluster/rgw*.sls</para>
+
+    <para>config/stack/default/global.yml</para>
+
+    <para>config/stack/default/ceph/cluster.yml</para>
+
+    <para>profile-1Supermicro59GB-2Intel372GB-24TOSHIBA5589GB-1/cluster/*.sls</para>
+
+    <para>profile-1Supermicro59GB-2Intel372GB-24TOSHIBA5589GB-1/stack/default/ceph/minions/*.yml</para>
+
+    <para>## End of policy.cfg file</para>
+  </section>
+
+  <section>
+    <title>Appendix D: OS Network Configuration</title>
+
+    <para>Perform the network configuration during the OS installation. The
+    three illustrations below show the configuration of one of the OSD servers
+    and associated bond settings.</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata contentdepth="368" contentwidth="648" fileref="clip_image012_1kjne54l.jpg"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para>YaST view of all network interfaces for an OSD server. Interfaces
+    eth0 and eth1 are bonded (bond0) and make up the primary network. Eth2 and
+    eth3 form the second bond (bond1) for the cluster network.</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata contentdepth="405" contentwidth="648" fileref="clip_image014_1kjne54l.jpg"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para>Bond drive options showing lacp.</para>
+
+    <para><inlinemediaobject>
+        <imageobject>
+          <imagedata contentdepth="351" contentwidth="648" fileref="clip_image016_1kjne54l.jpg"/>
+        </imageobject>
+      </inlinemediaobject></para>
+
+    <para>MTU 9000 setting for the cluster network bond.</para>
+  </section>
+
+  <section>
+    <title>Appendix E: Network switches configuration files</title>
+
+    <section>
+      <title>Nexus: A-side configuration</title>
+
+      <para>!Command: show running-config</para>
+
+      <para>!Time: Wed Apr 5 15:29:39 2017</para>
+
+      <para>version 7.0(3)I4(5)</para>
+
+      <para>hostname N9K-Suse-A</para>
+
+      <para>vdc N9K-Suse-A id 1</para>
+
+      <para>limit-resource vlan minimum 16 maximum 4094 limit-resource vrf
+      minimum 2 maximum 4096 limit-resource port-channel minimum 0 maximum 511
+      limit-resource u4route-mem minimum 248 maximum 248 limit-resource
+      u6route-mem minimum 96 maximum 96 limit-resource m4route-mem minimum 58
+      maximum 58 limit-resource m6route-mem minimum 8 maximum 8</para>
+
+      <para>feature telnet</para>
+
+      <para>cfs eth distribute</para>
+
+      <para>feature interface-vlan</para>
+
+      <para>feature lacp</para>
+
+      <para>feature vpc</para>
+
+      <para>no password strength-check</para>
+
+      <para>username admin password 5</para>
+
+      <para>vlan 1,145-146</para>
+
+      <para>vlan 145</para>
+
+      <para>name SuseData</para>
+
+      <para>vlan 146</para>
+
+      <para>name SuseStorage</para>
+
+      <para>vrf context management</para>
+
+      <para>ip route 0.0.0.0/0 10.128.99.1</para>
+
+      <para>vpc domain 100</para>
+
+      <para>peer-switch</para>
+
+      <para>role priority 10</para>
+
+      <para>peer-keepalive destination 10.128.99.88 source 10.128.99.87 delay
+      restore 150 peer-gateway auto-recovery ip arp synchronize</para>
+
+      <para>interface Vlan1</para>
+
+      <para>no shutdown</para>
+
+      <para>interface Vlan145</para>
+
+      <para>no shutdown</para>
+
+      <para>no ip redirects</para>
+
+      <para>ip address 192.168.145.145/24</para>
+
+      <para>interface Vlan146</para>
+
+      <para>no shutdown</para>
+
+      <para>mtu 9216</para>
+
+      <para>no ip redirects</para>
+
+      <para>ip address 192.168.146.145/24</para>
+
+      <para>interface port-channel1</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 1</para>
+
+      <para>interface port-channel2</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 2</para>
+
+      <para>interface port-channel3</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 3</para>
+
+      <para>interface port-channel4</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 4</para>
+
+      <para>interface port-channel5</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 5</para>
+
+      <para>interface port-channel6</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 6</para>
+
+      <para>interface port-channel7</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 7</para>
+
+      <para>interface port-channel8</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 8</para>
+
+      <para>interface port-channel9</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 9</para>
+
+      <para>interface port-channel10</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 10</para>
+
+      <para>interface port-channel11</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 11</para>
+
+      <para>interface port-channel12</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>vpc 12</para>
+
+      <para>interface port-channel25</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>vpc 25</para>
+
+      <para>interface port-channel26</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>vpc 26</para>
+
+      <para>interface port-channel27</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>vpc 27</para>
+
+      <para>interface port-channel28</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>vpc 28</para>
+
+      <para>interface port-channel48</para>
+
+      <para>switchport mode trunk</para>
+
+      <para>mtu 9216</para>
+
+      <para>vpc 48</para>
+
+      <para>interface port-channel53</para>
+
+      <para>description VPC peer</para>
+
+      <para>switchport mode trunk</para>
+
+      <para>switchport trunk allowed vlan 1,145-146</para>
+
+      <para>spanning-tree port type network</para>
+
+      <para>vpc peer-link</para>
+
+      <para>interface Ethernet1/1</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 1 mode active</para>
+
+      <para>interface Ethernet1/2</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 2 mode active</para>
+
+      <para>interface Ethernet1/3</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 3 mode active</para>
+
+      <para>interface Ethernet1/4</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 4 mode active</para>
+
+      <para>interface Ethernet1/5</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 5 mode active</para>
+
+      <para>interface Ethernet1/6</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 6 mode active</para>
+
+      <para>interface Ethernet1/7</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 7 mode active</para>
+
+      <para>interface Ethernet1/8</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 8 mode active</para>
+
+      <para>interface Ethernet1/9</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 9 mode active</para>
+
+      <para>interface Ethernet1/10</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 10 mode active</para>
+
+      <para>interface Ethernet1/11</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 11 mode active</para>
+
+      <para>interface Ethernet1/12</para>
+
+      <para>switchport access vlan 145</para>
+
+      <para>channel-group 12 mode active</para>
+
+      <para>interface Ethernet1/13</para>
+
+      <para>interface Ethernet1/14</para>
+
+      <para>interface Ethernet1/15</para>
+
+      <para>interface Ethernet1/16</para>
+
+      <para>interface Ethernet1/17</para>
+
+      <para>interface Ethernet1/18</para>
+
+      <para>interface Ethernet1/19</para>
+
+      <para>interface Ethernet1/20</para>
+
+      <para>interface Ethernet1/21</para>
+
+      <para>interface Ethernet1/22</para>
+
+      <para>interface Ethernet1/23</para>
+
+      <para>interface Ethernet1/24</para>
+
+      <para>interface Ethernet1/25</para>
+
+      <para>description SUSE OSD</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>channel-group 25 mode active</para>
+
+      <para>interface Ethernet1/26</para>
+
+      <para>description SUSE OSD</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>channel-group 26 mode active</para>
+
+      <para>interface Ethernet1/27</para>
+
+      <para>description SUSE OSD</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>channel-group 27 mode active</para>
+
+      <para>interface Ethernet1/28</para>
+
+      <para>description SUSE OSD</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>mtu 9216</para>
+
+      <para>channel-group 28 mode active</para>
+
+      <para>interface Ethernet1/29</para>
+
+      <para>switchport access vlan 146</para>
+
+      <para>interface Ethernet1/30</para>
+
+      <para>interface Ethernet1/31</para>
+
+      <para>interface Ethernet1/32</para>
+
+      <para>interface Ethernet1/33</para>
+
+      <para>interface Ethernet1/34</para>
+
+      <para>interface Ethernet1/35</para>
+
+      <para>interface Ethernet1/36</para>
+
+      <para>interface Ethernet1/37</para>
+
+      <para>interface Ethernet1/38</para>
+
+      <para>interface Ethernet1/39</para>
+
+      <para>interface Ethernet1/40</para>
+
+      <para>interface Ethernet1/41</para>
+
+      <para>interface Ethernet1/42</para>
+
+      <para>interface Ethernet1/43</para>
+
+      <para>interface Ethernet1/44</para>
+
+      <para>interface Ethernet1/45</para>
+
+      <para>interface Ethernet1/46</para>
+
+      <para>interface Ethernet1/47</para>
+
+      <para>interface Ethernet1/48</para>
+
+      <para>switchport mode trunk</para>
+
+      <para>mtu 9216</para>
+
+      <para>channel-group 48 mode active</para>
+
+      <para>interface Ethernet1/49</para>
+
+      <para>interface Ethernet1/50</para>
+
+      <para>interface Ethernet1/51</para>
+
+      <para>interface Ethernet1/52</para>
+
+      <para>interface Ethernet1/53</para>
+
+      <para>description VPC Peer</para>
+
+      <para>switchport mode trunk</para>
+
+      <para>switchport trunk allowed vlan 1,145-146</para>
+
+      <para>channel-group 53 mode active</para>
+
+      <para>interface Ethernet1/54</para>
+
+      <para>description VPC Peer</para>
+
+      <para>switchport mode trunk</para>
+
+      <para>switchport trunk allowed vlan 1,145-146</para>
+
+      <para>channel-group 53 mode active</para>
+
+      <para>interface mgmt0</para>
+
+      <para>vrf member management</para>
+
+      <para>ip address 10.128.99.87/24</para>
+
+      <para>line console</para>
+
+      <para>line vty</para>
+
+      <para>session-limit 16</para>
+
+      <para>email</para>
+
+      <para>smtp-host 10.128.30.12</para>
+
+      <para>smtp-port 25</para>
+
+      <para>reply-to buffy@imciscoexp.com</para>
+
+      <para>from SuseNexus@imciscoexp.com</para>
+
+      <para>vrf management</para>
+
+      <para>boot nxos bootflash:/nxos.7.0.3.I4.5.bin</para>
+
+      <para>------------------------------</para>
+
+      <para>show port-channel summary</para>
+
+      <para>Flags: D - Down P - Up in port-channel (members) I - Individual H
+      - Hot-standby (LACP only) s - Suspended r - Module-removed S - Switched
+      R - Routed U - Up (port-channel) p - Up in delay-lacp mode (member) M -
+      Not in use. Min-links not met</para>
+
+      <para>--------------------------------------------------------------------------------</para>
+
+      <para>Group Port- Type Protocol Member Ports</para>
+
+      <para>Channel</para>
+
+      <para>--------------------------------------------------------------------------------</para>
+
+      <para>1 Po1(SU) Eth LACP Eth1/1(P)</para>
+
+      <para>2 Po2(SU) Eth LACP Eth1/2(P)</para>
+
+      <para>3 Po3(SU) Eth LACP Eth1/3(P)</para>
+
+      <para>4 Po4(SU) Eth LACP Eth1/4(P)</para>
+
+      <para>5 Po5(SU) Eth LACP Eth1/5(P)</para>
+
+      <para>6 Po6(SU) Eth LACP Eth1/6(P)</para>
+
+      <para>7 Po7(SU) Eth LACP Eth1/7(P)</para>
+
+      <para>8 Po8(SU) Eth LACP Eth1/8(P)</para>
+
+      <para>9 Po9(SU) Eth LACP Eth1/9(P)</para>
+
+      <para>10 Po10(SU) Eth LACP Eth1/10(P)</para>
+
+      <para>11 Po11(SU) Eth LACP Eth1/11(P)</para>
+
+      <para>12 Po12(SU) Eth LACP Eth1/12(P)</para>
+
+      <para>25 Po25(SU) Eth LACP Eth1/25(P)</para>
+
+      <para>26 Po26(SU) Eth LACP Eth1/26(P)</para>
+
+      <para>27 Po27(SU) Eth LACP Eth1/27(P)</para>
+
+      <para>28 Po28(SU) Eth LACP Eth1/28(P)</para>
+
+      <para>48 Po48(SU) Eth LACP Eth1/48(P)</para>
+
+      <para>53 Po53(SU) Eth LACP Eth1/53(P) Eth1/54(P)</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Resources:</title>
+
+    <para/>
+  </section>
+
+  <section>
+    <title/>
+
+    <para><ulink url="https://www.suse.com/documentation/ses-4/book_storage_admin/data/book_storage_admin.html"/></para>
+  </section>
+</article>
