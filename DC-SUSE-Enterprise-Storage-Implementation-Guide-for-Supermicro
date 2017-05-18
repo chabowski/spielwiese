@@ -1,15 +1,15 @@
 ## Doc config file for the DAPS example document 
-## defined by MAIN-SUSE Enterprise-Storage-Implementation-Guide-for-Supermicro.xml
+## defined by MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml
 ##
 ## See /etc/daps/config for documentation of the settings below
 ##
-## These values are settings for the document defined by MAIN-SUSE Enterprise-Storage-Implementation-Guide-for-Supermicro.xml
+## These values are settings for the document defined by MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml
 ## only. Please do not add additional settings here - if you need to
 ## customize other settings from /etc/daps/config, do so in
 ## ~/.config/daps/dapsrc
 
 ## Mandatory Parameter
-MAIN="MAIN-SUSE Enterprise-Storage-Implementation-Guide-for-Supermicro.xml"
+MAIN="MAIN-SUSE-Enterprise-Storage-Implementation-Guide-for-Supermicro.xml"
 
 ##--------------------
 ## Optional Parameters
@@ -45,8 +45,3 @@ STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2013-ns/"
 #PROFVENDOR=""
 
 
-## If you want to be able to source this file, so you do not have
-## to specify the -d/--docconfig option with daps, uncomment the
-## following line
-##
-#export DOCCONF_NAME=$BASH_SOURCE
