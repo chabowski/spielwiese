@@ -1,0 +1,9 @@
+SUSE Enterprise Storage
+Advanced Lifecycle Management
+build/
+\#*#
+.#*
+*~
+*.bak
+*.orig
+SLES-rpiquick_color_en.pdf
