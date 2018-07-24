@@ -1,16 +1,13 @@
 // Load document variables
-include::Variables.txt[]
+include::Variables.adoc[]
 :docinfo:
 //
 // Start of the document
 //
 
-
-
 = {SAPHana} SR Scale-Out - Performance Optimized Scenario
 // Fabian Herschel, Bernd Schubert, Lars Pinne
-// 2018/07/12
-
+// 2018/07/23
 
 :Revision: 1.0
 
@@ -40,7 +37,7 @@ DONE PRIO2: (all) search for ???
 DONE PRIO3: Setup vs. set up, Backup vs Back up (check with Lee)
 ////
 
-== About This Guide
+== About this Guide
 
 === Introduction
 
@@ -1232,8 +1229,6 @@ most interesting culumn is the **Replication Status**, which should be **ACTIVE*
 
 [subs="specialchars,attributes,quotes"]
 ----
-123456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|1234567890|
-         1         2         3         4         5         6         7         8          9
 | Database | Host   | .. Site Name | Secondary | .. Secondary | .. **Replication**
 |          |        | ..           | Host      | .. Site Name | .. **Status**
 | -------- | ------ | .. --------- | --------- | .. --------- | .. ------
@@ -1278,7 +1273,7 @@ global.ini and allow {SAPHANA} to integrate the HA/DR hook script during start.
 - Check integration of the hook during startup
 
 Take the hook from the SAPHanaSR-scaleOut package and copy it to your preferred
-directory like /hana/share/myHooks
+directory like /hana/share/myHooks. The hook must be available on all SAP HANA nodes.
 
 [subs="specialchars,attributes"]
 ----
