@@ -1,5 +1,6 @@
 // Load document variables
 include::Variables.txt[]
+:docinfo:
 //
 // Start of the document
 //
@@ -10,7 +11,7 @@ include::Variables.txt[]
 // Fabian Herschel, Bernd Schubert, Lars Pinne
 // 2018/07/12
 
-:docinfo:
+
 :Revision: 1.0
 
 // Standard SUSE includes
